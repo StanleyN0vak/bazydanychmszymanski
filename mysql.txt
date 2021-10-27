@@ -1,0 +1,356 @@
+login as: szymanskim
+szymanskim@213.184.8.36's password:
+Linux bad2 4.10.17-1-pve #1 SMP PVE 4.10.17-16 (Tue, 11 Jul 2017 09:55:44 +0200)                                    x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+szymanskim@bad2:~$ pwd
+/home/szymanskim
+szymanskim@bad2:~$ cd ..
+szymanskim@bad2:/home$ ls
+adamowicza      folender         krajewskij      mslizewski      rutkowskim
+adamowiczk      fragnowskil      kretkiewiczb    msobiecki       rutkowskin
+adamskik        franczakd        kropiak         mstolarczyk     rybinskib
+akowalski       frobins          kruzczynski     mszcypior       rymkiewiczk
+andraskij       frzap            krychg          mszczesniak     sadzewiczm
+andrejczykw     gejdam           kryksp          mszczypior      sdrozda
+asiemaszko      gieckoj          kryzinska       mszulia         sekr
+asledzianowska  gieniuszd        kstrzemieczny   mszymanski      seredam
+aszczesny       godzinak         ktydelski       mtaraszkiewicz  sidora
+atrentowski     golecp           kucinskio       mtawkin         sidoran
+augniewski      goralskiw        kulmaczewskak   mtomaszewski    sipm
+awelnicki       gorczycaf        kwadecki        muliszewski     siurnickip
+awener          goreckig         kzabkiewicz     murachs         sjasinski
+awieczynski     grabowskak       kzacharewicz    muszynskan      sjurczak
+awilk           grabowskid       kzieba          mwaraksa        skrzypinskio
+awitasik        gralewskip       kziolkowski     mwarych         skupinskim
+azalecki        gzabuski         ladoszs         mwasilewski     slapinski
+azarnoch        haszekt          lagodzinskik    mwiatrowski     slawinskis
+baginskim       hincm            laskaj          mwolyniec       slodkowskid
+bakp            horabikm         laskowskim      mzawadzki       sobieckim
+balackik        hryciukp         ldoroszkiewicz  mzielinski      sokolk
+banachm         hrycyka          lejwodap        mziolkowski     sokolniks
+bandzulm        hryniewickij     lemieszeka      napiorkowskim   sokolowskig
+bartkowiakb     huraa            lempickam       nasiadkam       somolecki
+bartkowiakba    jablonskia       lewandowskan    nieznanskid     sosnowskij
+bartosiewiczj   jachimowiczs     lgromacki       nosekn          spicha
+bartosiewiczja  jagodzinskij     licznerskaa     nszczepanski    spodolewski
+bastekp         janickim         listowskik      nwenda          srypinski
+bbiedrzycki     jankowskil       liudmylac       obryckia        sswierzbin
+bdarzinow       jaromink         lzalewski       okulaj          sszlachtowicz
+biendarrak      jaroszt          machniewskim    oleksiakj       statkowski
+boguszp         jarzynskik       magudam         olszaks         stepniakk
+borkowskad      jaszczuka        majchrzakb      olszewskik      stepnowskib
+borkowskid      jburandt         makowskim       orychtelski     suboczm
+borowskil       jeznacha         maksymowm       ostrowskij      susk
+brummansa       jgolabek         malczyka        ostrowskim      sutulaa
+brzoskak        jhause           malinowskij     ozalewski       swagner
+bsurowiec       jjurewicz        malons          pajaks          swielgosz
+butkiewiczp     jlubacha         markowskak      pantowb         swietochowskik
+bzurek          jnadratowski     maruszewskiw    parzychm        szakrzewski
+cabajk          jpogorzelski     marzecp         pelaka          szczepanskim
+calkab          jpulawski        maternag        pelicaa         szczesniakw
+chaichukl       jsyperek         mbielecki       pglinski        szelagowskim
+chmielewskid    jtarzanowski     mejlune         piatkiewiczk    sztabinskim
+churas          jurczakb         mglod           pietrzakm       szymanskam
+ciemerycha      jurewiczj        mgrygorczuk     piotrowiczr     szymanskan
+cwikp           jwyzlic          mierzejewskim   piotrowskit     szymanskij
+czajkowskia     jzegota          mikolajewskik   pisarskij       szymanskim
+czajkowskij     kaczmarczykm     miksztoa        pliszkaa        szypulskik
+dabrowskaa      kalamarskil      milewskik       pmiros          tluczko
+dabrowskim      karczj           milewskio       powirskim       trentowskia
+dbrzezin        kawczynskii      minkowskis      protsailod      trzcinskam
+ddreslinski     kawinskih        mipietrzyk      prusika         ubankowska
+diminski        kfilipowicz      mjamrozy        psudol          vpoltavtsev
+dlugoleckia     kibitlewskij     mkaminski       pszczepkowski   wachk
+dnieznanski     kierklok         mklukowski      ptruchan        wardowskip
+dobrenkon       kkrecik          mkrukowski      purzyckib       wewersajtysw
+domanskas       klobuszenskij    mlawicki        pzadroga        wielgolewskip
+dondalskio      kludwiczuk       mlewandowski    radzanowskib    winnickan
+dplocharczyk    kmalinowski      mlukaszewicz    rafalowskam     wisniewskio
+drozdap         kmarszalkiewicz  molszewski      rakielj         wlaszcz
+drzaszczk       knopfd           mpietrzyk       rborkowski      wojcickij
+dsojka          kokoszkok        mploski         reksak          wojciechowskam
+dtomczak        konzieba         mpolkowski      reutj           woznowskir
+duczeks         kopkaj           mras            rkordys         wroblewskij
+dwolniak        kosmam           mraszkowski     rodzenkon       wskowronski
+dykb            kotarskip        mroczkowskik    roguskib        wturski
+dzabijak        kowalczykw       mrozk           romanowskaa     wzoreka
+dziegiela       kowalewskim      mrozowskim      rozmyslowiczk   zaczekk
+eczaplicka      kownackim        mrybacki        rozwadowskia    zembrowskim
+eolszewski      kozakp           msadokierska    ruchalam        zuka
+eporeda         koziatekj        msenderowski    ruminskid       zwierzynskim
+falkowskie      kozlowskip       msieklicki      rusiakf
+szymanskim@bad2:/home$ cd szymanskim
+szymanskim@bad2:~$ ls
+szymanskim@bad2:~$ ls -a
+.  ..  .bash_logout  .bashrc  .profile
+szymanskim@bad2:~$ mkdir testowy
+szymanskim@bad2:~$ ls
+testowy
+szymanskim@bad2:~$ ls -l
+total 4
+drwxr-xr-x 2 szymanskim szymanskim 4096 Oct 27 09:28 testowy
+szymanskim@bad2:~$ cd testowy
+szymanskim@bad2:~/testowy$ ls
+szymanskim@bad2:~/testowy$ touch test.txt
+szymanskim@bad2:~/testowy$ ls
+test.txt
+szymanskim@bad2:~/testowy$ ls -l
+total 0
+-rw-r--r-- 1 szymanskim szymanskim 0 Oct 27 09:29 test.txt
+szymanskim@bad2:~/testowy$ nano test.txt
+szymanskim@bad2:~/testowy$ ls
+test.txt
+szymanskim@bad2:~/testowy$ cat test.txt
+plik testowy
+szymanskim@bad2:~/testowy$ ls -l
+total 4
+-rw-r--r-- 1 szymanskim szymanskim 13 Oct 27 09:30 test.txt
+szymanskim@bad2:~/testowy$ cd ~
+szymanskim@bad2:~$ ls
+testowy
+szymanskim@bad2:~$ passwd
+Changing password for szymanskim.
+(current) UNIX password:
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+szymanskim@bad2:~$ mysql -u szymanskim -p
+Enter password:
+ERROR 1045 (28000): Access denied for user 'szymanskim'@'localhost' (using passw                                   ord: YES)
+szymanskim@bad2:~$ mysql -u szymanskim -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 528
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| szymanskim         |
++--------------------+
+2 rows in set (0.42 sec)
+
+mysql> use szymanskim
+Database changed
+mysql> show tabel
+    ->
+    ->
+    ->
+    ->
+    ->
+    ->
+    -> exit
+    ->
+    ->
+    ->
+    -> show tables;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that                                    corresponds to your MySQL server version for the right syntax to use near 'tabel
+
+
+
+
+
+
+exit
+
+
+
+show tables' at line 1
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> drop database szymanskim;
+Query OK, 0 rows affected (1.06 sec)
+
+mysql> create database szymanski;
+ERROR 1044 (42000): Access denied for user 'szymanskim'@'%' to database 'szymans                                   ki'
+mysql> create database szymanskim;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> show tables;
+ERROR 1046 (3D000): No database selected
+mysql> use szymanskim
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> CREATE TABEL pracownik(id_pracownika INT PRIMARY KEY, imie VARCHAR(30) NOT NULL, nazwisko VARCHAR(50) NOT NUsjer'));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server veat line 1
+mysql> CREATE TABLE pracownik(id_pracownika INT PRIMARY KEY, imie VARCHAR(30) NOT NULL, nazwisko VARCHAR(50) NOT NUsjer'));
+Query OK, 0 rows affected, 1 warning (0.58 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_szymanskim |
++----------------------+
+| pracownik            |
++----------------------+
+1 row in set (0.05 sec)
+
+mysql> mysql> CREATE TABLE  )
+[1]+  Stopped                 mysql -u szymanskim -p
+szymanskim@bad2:~$ mysql -u szymanskim -p
+Enter password:
+ERROR 1045 (28000): Access denied for user 'szymanskim'@'localhost' (using password: YES)
+szymanskim@bad2:~$ mysql -u szymanskim -p
+Enter password:
+ERROR 1045 (28000): Access denied for user 'szymanskim'@'localhost' (using password: YES)
+szymanskim@bad2:~$ mysql -u szymanskim -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 555
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use szymanskim
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++----------------------+
+| Tables_in_szymanskim |
++----------------------+
+| pracownik            |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> CREATE TABLE postac(id_postaci PRIMARY KEY, nazwa VARCHAR(40), rodzaj ENUM('wiking', 'ptak', 'kobieta'), data_ur DATE, wiek INTEGER);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIMARY KEY, nazwa VARCHAR(40), rodzaj ENUM('wiking', 'ptak', 'kobieta'), data_u' at line 1
+mysql> CREATE TABLE postac(id_postaci INT PRIMARY KEY, nazwa VARCHAR(40), rodzaj ENUM('wiking', 'ptak', 'kobieta'),
+ data_ur DATE, wiek INTEGER);
+Query OK, 0 rows affected (0.52 sec)
+
+mysql> INTSERT INTO postac (nazwa, rodzaj, data_ur, wiek) VALUES ('Bjorn', 'wiking', '1045-12-04', '45');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INTSERT INTO postac (nazwa, rodzaj, data_ur, wiek) VALUES ('Bjorn', 'wiking', '1' at line 1
+mysql> INSERT INTO postac (nazwa, rodzaj, data_ur, wiek) VALUES ('Bjorn', 'wiking', '1045-12-04', '45');
+ERROR 1364 (HY000): Field 'id_postaci' doesn't have a default value
+mysql> INSERT INTO postac (id_postac, nazwa, rodzaj, data_ur, wiek) VALUES ('01', 'Bjorn', 'wiking', '1045-12-04',
+'45');
+ERROR 1054 (42S22): Unknown column 'id_postac' in 'field list'
+mysql> INSERT INTO postac (id_postaci, nazwa, rodzaj, data_ur, wiek) VALUES ('01', 'Bjorn', 'wiking', '1045-12-04',
+ '45');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO postac (id_postaci, nazwa, rodzaj, data_ur, wiek) VALUES ('02', 'Drozd', 'ptak', '1066-04-20', '38');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO postac (id_postaci, nazwa, rodzaj, data_ur, wiek) VALUES ('03', 'Tesciowa', 'kobieta', '1006-06-16', '89');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> SHOW TABLES;
++----------------------+
+| Tables_in_szymanskim |
++----------------------+
+| postac               |
+| pracownik            |
++----------------------+
+2 rows in set (0.08 sec)
+
+mysql> DESC postac
+    -> ;
++------------+---------------------------------+------+-----+---------+-------+
+| Field      | Type                            | Null | Key | Default | Extra |
++------------+---------------------------------+------+-----+---------+-------+
+| id_postaci | int                             | NO   | PRI | NULL    |       |
+| nazwa      | varchar(40)                     | YES  |     | NULL    |       |
+| rodzaj     | enum('wiking','ptak','kobieta') | YES  |     | NULL    |       |
+| data_ur    | date                            | YES  |     | NULL    |       |
+| wiek       | int                             | YES  |     | NULL    |       |
++------------+---------------------------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> SHOW CREATE TABLE postac;
++--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table  | Create Table                                                                                                                                                                                                                                                                                                |
++--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| postac | CREATE TABLE `postac` (
+  `id_postaci` int NOT NULL,
+  `nazwa` varchar(40) DEFAULT NULL,
+  `rodzaj` enum('wiking','ptak','kobieta') DEFAULT NULL,
+  `data_ur` date DEFAULT NULL,
+  `wiek` int DEFAULT NULL,
+  PRIMARY KEY (`id_postaci`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++--------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE postac SET wiek='88' WHERE rodzaj='kobieta';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> CREATE TABLE walizka(id_walizki INT PRIMARY KEY AUTO_INCREMENT, pojemnosc INTEGER, kolor ENUM('rozowy', 'czerwony', 'teczowy', 'zolty'), id_wlasciciela INT);
+Query OK, 0 rows affected (0.22 sec)
+
+mysql> ALTER TABLE walizka ADD CONSTRAINT walizka_postac_fk FOREIGN KEY (id_wlasciciela) REFERENCES (id_postaci);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(id_postaci)' at line 1
+mysql> ALTER TABLE walizka ADD CONSTRAINT walizka_postac_fk FOREIGN KEY (id_wlasciciela) REFERENCES postac(id_posta
+ci);
+Query OK, 0 rows affected (0.49 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC walizka
+    -> ;
++----------------+---------------------------------------------+------+-----+---------+----------------+
+| Field          | Type                                        | Null | Key | Default | Extra          |
++----------------+---------------------------------------------+------+-----+---------+----------------+
+| id_walizki     | int                                         | NO   | PRI | NULL    | auto_increment |
+| pojemnosc      | int                                         | YES  |     | NULL    |                |
+| kolor          | enum('rozowy','czerwony','teczowy','zolty') | YES  |     | NULL    |                |
+| id_wlasciciela | int                                         | YES  | MUL | NULL    |                |
++----------------+---------------------------------------------+------+-----+---------+----------------+
+4 rows in set (0.07 sec)
+
+mysql> ALTER TABLE walizka MODIFY kolor DEFAULT rozowy;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DEFAULT rozowy' at line 1
+mysql> ALTER TABLE walizka MODIFY kolor DEFAULT 'rozowy';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DEFAULT 'rozowy'' at line 1
+mysql> ALTER TABLE walizka MODIFY kolor ENUM DEFAULT 'rozowy';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DEFAULT 'rozowy'' at line 1
+mysql> ALTER TABLE walizka MODIFY ENUM DEFAULT 'rozowy' FOR kolor;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DEFAULT 'rozowy' FOR kolor' at line 1
+mysql> ALTER TABLE walizka MODIFY kolor ENUM DEFAULT 'rozowy';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DEFAULT 'rozowy'' at line 1
+mysql> ALTER TABLE walizka ADD kolor ENUM DEFAULT 'rozowy';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DEFAULT 'rozowy'' at line 1
+mysql> ALTER TABLE walizka ADD CONSTRAINT kolor ENUM DEFAULT 'rozowy';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ENUM DEFAULT 'rozowy'' at line 1
+mysql> ALTER TABLE walizka ADD DEFAULT 'rozowy' FOR kolor;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DEFAULT 'rozowy' FOR kolor' at line 1
+mysql> DESC walizka;
++----------------+---------------------------------------------+------+-----+---------+----------------+
+| Field          | Type                                        | Null | Key | Default | Extra          |
++----------------+---------------------------------------------+------+-----+---------+----------------+
+| id_walizki     | int                                         | NO   | PRI | NULL    | auto_increment |
+| pojemnosc      | int                                         | YES  |     | NULL    |                |
+| kolor          | enum('rozowy','czerwony','teczowy','zolty') | YES  |     | NULL    |                |
+| id_wlasciciela | int                                         | YES  | MUL | NULL    |                |
++----------------+---------------------------------------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> ALTER TABLE walizka MODIFY COLUMN kolor ENUM DEFAULT 'rozowy';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DEFAULT 'rozowy'' at line 1
+mysql>
