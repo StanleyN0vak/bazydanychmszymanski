@@ -1,0 +1,8 @@
+
+mysql> CREATE TABLE izba (adres_budynku INT, nazwa_izby INT, CONSTRAINT PRIMARY KEY id_izba (adres_budynku, nazwa_izby), metraz DOUBLE (10,2) UNSIGNED, wlasciciel INT NULL, CONSTRAINT id_wlasciciel FOREIGN KEY (id_postaci) REFERENCES postac(nazwa));
+ERROR 1072 (42000): Key column 'id_postaci' doesn't exist in table
+mysql> CREATE TABLE izba (adres_budynku INT, nazwa_izby INT, CONSTRAINT PRIMARY KEY id_izba (adres_budynku, nazwa_izby), metraz DOUBLE (10,2) UNSIGNED, wlasciciel INT NULL, CONSTRAINT id_wlasciciel FOREIGN KEY (Bjorn) REFERENCES postac(nazwa));
+ERROR 1072 (42000): Key column 'Bjorn' doesn't exist in table
+mysql> CREATE TABLE izba (adres_budynku INT, nazwa_izby INT, CONSTRAINT PRIMARY KEY id_izba (adres_budynku, nazwa_izby), metraz DOUBLE (10,2) UNSIGNED, wlasciciel INT NULL, CONSTRAINT id_wlasciciel FOREIGN KEY (id_postaci) REFERENCES postac(nazwa));
+ERROR 1072 (42000): Key column 'id_postaci' doesn't exist in table
+
