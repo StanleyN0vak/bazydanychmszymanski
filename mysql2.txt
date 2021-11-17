@@ -1,8 +1,119 @@
+login as: szymanskim
+szymanskim@213.184.8.36's password:
+Linux bad2 4.10.17-1-pve #1 SMP PVE 4.10.17-16 (Tue, 11 Jul 2017 09:55:44 +0200) x86_64
 
-mysql> CREATE TABLE izba (adres_budynku INT, nazwa_izby INT, CONSTRAINT PRIMARY KEY id_izba (adres_budynku, nazwa_izby), metraz DOUBLE (10,2) UNSIGNED, wlasciciel INT NULL, CONSTRAINT id_wlasciciel FOREIGN KEY (id_postaci) REFERENCES postac(nazwa));
-ERROR 1072 (42000): Key column 'id_postaci' doesn't exist in table
-mysql> CREATE TABLE izba (adres_budynku INT, nazwa_izby INT, CONSTRAINT PRIMARY KEY id_izba (adres_budynku, nazwa_izby), metraz DOUBLE (10,2) UNSIGNED, wlasciciel INT NULL, CONSTRAINT id_wlasciciel FOREIGN KEY (Bjorn) REFERENCES postac(nazwa));
-ERROR 1072 (42000): Key column 'Bjorn' doesn't exist in table
-mysql> CREATE TABLE izba (adres_budynku INT, nazwa_izby INT, CONSTRAINT PRIMARY KEY id_izba (adres_budynku, nazwa_izby), metraz DOUBLE (10,2) UNSIGNED, wlasciciel INT NULL, CONSTRAINT id_wlasciciel FOREIGN KEY (id_postaci) REFERENCES postac(nazwa));
-ERROR 1072 (42000): Key column 'id_postaci' doesn't exist in table
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
 
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Wed Nov  3 10:33:23 2021 from 213.184.8.151
+szymanskim@bad2:~$ mysql -u szymanskim -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1339
+Server version: 8.0.22 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show tables
+    -> ;
+ERROR 1046 (3D000): No database selected
+mysql> show databese;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databese' at line 1
+mysql> show databeses;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databeses' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| szymanskim         |
+| wikingowie         |
++--------------------+
+3 rows in set (0.02 sec)
+
+mysql> select szymanskim;
+ERROR 1054 (42S22): Unknown column 'szymanskim' in 'field list'
+mysql> cd szymanskim;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'cd szymanskim' at line 1
+mysql> use szymanskim;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tabels;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tabels' at line 1
+mysql> show tabel;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tabel' at line 1
+mysql> show tables;
++----------------------+
+| Tables_in_szymanskim |
++----------------------+
+| postac               |
+| pracownik            |
+| walizka              |
++----------------------+
+3 rows in set (0.00 sec)
+
+mysql> show table walizka;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'walizka' at line 1
+mysql> use table walizak;
+ERROR 1044 (42000): Access denied for user 'szymanskim'@'%' to database 'table'
+mysql> use wiking;
+ERROR 1044 (42000): Access denied for user 'szymanskim'@'%' to database 'wiking'
+mysql> use wikingowie;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++----------------------+
+| Tables_in_wikingowie |
++----------------------+
+| ekwipunek            |
+| etapy_wyprawy        |
+| kreatura             |
+| sektor               |
+| uczestnicy           |
+| wyprawa              |
+| zasob                |
++----------------------+
+7 rows in set (0.00 sec)
+
+mysql> use szymanskim;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> ALTER TABLE walizka MODIFY kolor DEFAULT 'rozowy';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DEFAULT 'rozowy'' at line 1
+mysql> ALTER TABLE walizka
+    -> ALTER COLUMN kolor SET DEFAULT 'rozowy';
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO walizka (pojemnosc, kolor, id_wlasciciel) VALUES (20, 'czerwony', 1);
+ERROR 1054 (42S22): Unknown column 'id_wlasciciel' in 'field list'
+mysql> INSERT INTO walizka (pojemnosc, kolor, id_wlasciciela) VALUES (20, 'czerwony', 1);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO walizka (pojemnosc, kolor, id_wlasciciela) VALUES (10, 'rozowy', 2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> clear history -u;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'clear history -u' at line 1
+mysql> clear history;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'clear history' at line 1
+mysql> clear history -c;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'clear history -c' at line 1
+mysql> clear history -c
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'clear history -c' at line 1
