@@ -1,0 +1,219 @@
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| szymanskim         |
+| wikingowie         |
++--------------------+
+3 rows in set (0.01 sec)
+
+mysql> use szymanskim
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables
+    -> ;
++----------------------+
+| Tables_in_szymanskim |
++----------------------+
+| postac               |
+| pracownik            |
+| walizka              |
++----------------------+
+3 rows in set (0.00 sec)
+
+mysql> mysql> CREATE TABLE izba(adres_budynku INT AUTO_INCREMENT, nazwa_izby VARCHAR(40), metraz INT NOT NULL, wlasciciel INT, FOREGIN KEY(wlasciciel) REFERENCES postac(id_postaci) ON DELETE SET NULL, PRIMARY KEY(adres_budynku, nazwa_izby));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'KEY(wlasciciel) REFERENCES postac(id_postaci) ON DELETE SET NULL, PRIMARY KEY(ad' at line 1
+mysql> CREATE TABLE izba(adres_budynku INT AUTO_INCREMENT,
+    -> nazwa_izby VARCHAR(40),
+    -> metraz INT NOT NULL,
+    -> wlasciciel INT,
+    -> FOREGIN KEY(wlasciciel) REFERENCES postac(id_postaci) ON DELETE SET NULL,
+    -> PRIMARY KEY(adres_budynku, nazwa_izby));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'KEY(wlasciciel) REFERENCES postac(id_postaci) ON DELETE SET NULL,
+PRIMARY KEY(ad' at line 5
+mysql> CREATE TABLE izba(adres_budynku INT AUTO_INCREMENT, nazwa_izby VARCHAR(40), metraz INT NOT NULL, wlasciciel INT, FOREGIN KEY (wlasciciel) REFERENCES postac (id_postaci) ON DELETE
+SET NULL, PRIMARY KEY (adres_budynku, nazwa_izby));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'KEY (wlasciciel) REFERENCES postac (id_postaci) ON DELETE SET NULL, PRIMARY KEY ' at line 1
+mysql> CREATE TABLE izba(adres_budynku INT AUTO_INCREMENT, nazwa_izby VARCHAR(40), metraz INT NOT NULL, wlasciciel INT, FOREGIN KEY (wlasciciel) REFERENCES postac (id_postaci) ON DELETE
+SET NULL, PRIMARY KEY (adres_budynku, nazwa_izby));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'KEY (wlasciciel) REFERENCES postac (id_postaci) ON DELETE SET NULL, PRIMARY KEY ' at line 1
+mysql> create table izba(adres_budynku int auto_increment,nazwa_izby varchar(40),
+    -> metraz int not null,
+    -> wlasciciel int,
+    -> foreign key (wlasciciel) references postac(id_postaci) on delete set null,
+    -> primary key (adres_budynku,nazwa_izby));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> SHOW TABLES;
++----------------------+
+| Tables_in_szymanskim |
++----------------------+
+| izba                 |
+| postac               |
+| pracownik            |
+| walizka              |
++----------------------+
+4 rows in set (0.00 sec)
+
+mysql> ALTER TABLE izba ADD COLLUMN kolor VARCHAR(50) SET DEFAULT 'czarny';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'kolor VARCHAR(50) SET DEFAULT 'czarny'' at line 1
+mysql> alter table izba add collumn kolor varchar(50) set default 'czarny';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'kolor varchar(50) set default 'czarny'' at line 1
+mysql> ALTER TABLE izba ADD kolor VARCHAR(50) SET DEFAULT 'czarny';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET DEFAULT 'czarny'' at line 1
+mysql> ALTER TABLE izba ADD kolor VARCHAR(50) DEFAULT 'czarny';
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO izba(nazwa_izby, metraz, wlasciciel) VALUES('spizarnia', 50);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> INSERT INTO izba(nazwa_izby, metraz, wlasciciel) VALUES('spizarnia', 50, 1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> CREATE TABLE przetwory(id_przetworu INT AUTO_INCREMENT PRIMARY KEY,
+    -> rok_produkcji YEAR DEFAULT 1654,
+    -> id_wykonawcy INT,
+    -> zawartosc VARCHAR(70),
+    -> dodatek VARCHAR(50) DEFAULT 'papryczka chili',
+    -> id_konsumenta INT,
+    -> FOREIGN KEY (id_wykonawcy) REFERENCES postac(id_postaci),
+    -> FOREIGN KEY (id_konsumenta) REFERENCES postac(id_postaci));
+ERROR 1067 (42000): Invalid default value for 'rok_produkcji'
+mysql> create table przetwory(id_przetworu int primary key auto_increment,rok_rodukcji year default 1654,id_wykonawcy int, zawartosc varchar(70),dodatek varchar(50) default 'papryczka chili',id_konsumenta int, foreign key (id_wykonawcy) references postac(id_postaci), foreign key (id_konsumenta) references postac(id_postaci));
+ERROR 1067 (42000): Invalid default value for 'rok_rodukcji'
+mysql> CREATE TABLE przetwory(id_przetworu INT AUTO_INCREMENT PRIMARY KEY,
+    -> rok_produkcji DATE(YEAR) DEFAULT 1654,
+    -> id_wykonawcy INT,
+    -> zawartosc VARCHAR(70),
+    -> dodatek VARCHAR(50) DEFAULT 'papryczka chili',
+    -> id_konsumenta INT,
+    -> FOREIGN KEY (id_wykonawcy) REFERENCES postac(id_postaci),
+    -> FOREIGN KEY (id_konsumenta) REFERENCES postac(id_postaci));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(YEAR) DEFAULT 1654,
+id_wykonawcy INT,
+zawartosc VARCHAR(70),
+dodatek VARCHAR(50' at line 2
+mysql> CREATE TABLE przetwory(id_przetworu INT AUTO_INCREMENT PRIMARY KEY, rok_produkcji YEAR DEFAULT '1654', id_wykonawcy INT, zawartosc VARCHAR(70), dodatek VARCHAR(50) DEFAULT 'papryc
+zka chili', id_konsumenta INT, FOREIGN KEY (id_wykonawcy) REFERENCES postac(id_postaci), FORE
+IGN KEY (id_konsumenta) REFERENCES postac(id_postaci));
+ERROR 1067 (42000): Invalid default value for 'rok_produkcji'
+mysql> CREATE TABLE przetwory(id_przetworu INT AUTO_INCREMENT PRIMARY KEY, rok_produkcji YEAR DEFAULT '1654-01-01', id_wykonawcy INT, zawartosc VARCHAR(70), dodatek VARCHAR(50) DEFAULT 'papryczka chili', id_konsumenta INT, FOREIGN KEY (id_wykonawcy) REFERENCES postac(id_postaci)
+, FOREIGN KEY (id_konsumenta) REFERENCES postac(id_postaci));
+ERROR 1067 (42000): Invalid default value for 'rok_produkcji'
+mysql> CREATE TABLE przetwory(id_przetworu INT AUTO_INCREMENT PRIMARY KEY, rok_produkcji DATE  DEFAULT '1654-01-01', id_wykonawcy INT, zawartosc VARCHAR(70), dodatek VARCHAR(50) DEFAULT
+'papryczka chili', id_konsumenta INT, FOREIGN KEY (id_wykonawcy) REFERENCES postac(id_postaci
+), FOREIGN KEY (id_konsumenta) REFERENCES postac(id_postaci));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> INSERT INTO przetwory(id_wykonawcy, zawartosc, id_konsumenta) VALUES(1, 'kapusta', 2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO postac(nazwa, rodzaj, data_ur, wiek) VALUES('Arnbjorn', 'wiking', '1625.02.20', 24);
+ERROR 1364 (HY000): Field 'id_postaci' doesn't have a default value
+mysql> ALTER TABLE postac MODIFY COLUMN id_postaci INT PRIMARY KEY, AUTO_INCREMENT;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> ALTER TABLE postac MODIFY COLUMN id_postaci INT PRIMARY KEY AUTO_INCREMENT;
+ERROR 1068 (42000): Multiple primary key defined
+mysql> ALTER TABLE postac MODIFY COLUMN id_postaci AUTO_INCREMENT;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTO_INCREMENT' at line 1
+mysql> INSERT INTO postac(id_postaci, nazwa, rodzaj, data_ur, wiek) VALUES(4, 'Arnbjorn', 'wi
+king', '1625.02.20', 24);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO postac(id_postaci, nazwa, rodzaj, data_ur, wiek) VALUES(5, 'Beigarth', 'wi
+king', '1628.03.21', 21);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO postac(id_postaci, nazwa, rodzaj, data_ur, wiek) VALUES(6, 'Bjor', 'wiking
+', '1630.12.12', 19);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO postac(id_postaci, nazwa, rodzaj, data_ur, wiek) VALUES(7, 'Bolverk', 'wik
+ing', '1626.11.01', 26);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO postac(id_postaci, nazwa, rodzaj, data_ur, wiek) VALUES(8, 'Byrnjolf', 'wi
+king', '1620.05.24', 30);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> CREATE TABLE statek(nazwa_statku INT PRIMARY KEY AUTO_INCREMENT,
+    -> rodzaj_statku INT,
+    -> data_wodowania DATE,
+    -> max_ladownosc INT NOT NULL);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> INSERT INTO statek(rodzaj_statku, data_wodowania, max_ladownosc) VALUES(1, '1648.04.23', 5);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO statek(rodzaj_statku, data_wodowania, max_ladownosc) VALUES(2, '1646.11.10', 7);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> ALTER TABLE postac ADD COLUMN funkcja VARCHAR(20);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE postac SET funkcja='kapitan' WHERE nazwa='Bjorn';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> ALTER TABLE POSTAC ADD COLUMN statek INT FOREIGN KEY(statek) REFERENCES statek(nazwa_statku);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY(statek) REFERENCES statek(nazwa_statku)' at line 1
+mysql> alter table postac add collumn statek int foreign key(statek) references statek(nazwa_statku);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'statek int foreign key(statek) references statek(nazwa_statku)' at line 1
+mysql> ALTER TABLE POSTAC ADD statek INT FOREIGN KEY(statek) REFERENCES statek(nazwa_statku);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY(statek) REFERENCES statek(nazwa_statku)' at line 1
+mysql> ALTER TABLE POSTAC ADD statek INT FOREIGN KEY (statek) REFERENCES statek(nazwa_statku);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY (statek) REFERENCES statek(nazwa_statku)' at line 1
+mysql> ALTER TABLE postac ADD statek INT FOREIGN KEY (statek) REFERENCES statek(nazwa_statku);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY (statek) REFERENCES statek(nazwa_statku)' at line 1
+mysql> ALTER TABLE postac ADD statek INT, FOREIGN KEY (statek) REFERENCES statek(nazwa_statku);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY (statek) REFERENCES statek(nazwa_statku)' at line 1
+mysql> ALTER TABLE postac ADD statek INT;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE postac MODIFY COLUMN statek FOREIGN KEY(statek REFERENCES statek(nazwa_statku);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY(statek REFERENCES statek(nazwa_statku)' at line 1
+mysql> ALTER TABLE postac ADD  FOREIGN KEY(statek REFERENCES statek(nazwa_statku);           ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'REFERENCES statek(nazwa_statku)' at line 1
+mysql> ALTER TABLE postac ADD FOREIGN KEY(statek) REFERENCES statek(nazwa_statku);
+Query OK, 8 rows affected (0.13 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE postac SET statek=1 WHERE nazwa='Bjorn';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE postac SET statek=1 WHERE nazwa='Drozd';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE postac SET statek=1 WHERE nazwa='Arnbjorn';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE postac SET statek=1 WHERE nazwa='Beigarth';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE postac SET statek=2 WHERE nazwa='Bjor';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE postac SET statek=2 WHERE nazwa='Bolverk';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE postac SET statek=2 WHERE nazwa='Byrnjolf';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> DELETE FROM izba WHERE nazwa_izby='spizarnia';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DROP TABLE izba;
+Query OK, 0 rows affected (0.02 sec)
