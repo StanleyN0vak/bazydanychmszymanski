@@ -1,0 +1,439 @@
+mysql> show tables;
++----------------------+
+| Tables_in_szymanskim |
++----------------------+
+| Marynaz              |
+| ekwipunek            |
+| kreatura             |
+| postac               |
+| pracownik            |
+| przetwory            |
+| walizka              |
+| zasob                |
+| zwierz               |
++----------------------+
+9 rows in set (0.05 sec)
+
+mysql> SELECT rodzaj, SUM(rodzaj) AS ilosc FROM kreatura GROUP BY rodzaj;
++---------+-------+
+| rodzaj  | ilosc |
++---------+-------+
+| wiking  |     0 |
+| ryba    |     0 |
+| waz     |     0 |
+| ptak    |     0 |
+| wiedzma |     0 |
+| malpa   |     0 |
++---------+-------+
+6 rows in set, 19 warnings (0.55 sec)
+
+mysql> SELECT rodzaj, SUM(rodzaj) AS ilosc FROM kreatura GROUP BY rodzaj having ilosc > 1;
+Empty set, 19 warnings (0.04 sec)
+
+mysql> SELECT * FROM kreatura;
++------------+----------------------------+---------+------------+------+--------+
+| idKreatury | nazwa                      | rodzaj  | dataUr     | waga | udzwig |
++------------+----------------------------+---------+------------+------+--------+
+|          1 | Bjorn                      | wiking  | 1670-04-01 |   99 |     80 |
+|          2 | Brutal                     | wiking  | 1672-12-24 |  120 |     85 |
+|          3 | Khorad                     | wiking  | 1671-07-15 |  105 |     81 |
+|          4 | Birgun                     | wiking  | 1675-05-11 |   88 |     66 |
+|          5 | Defgard                    | wiking  | 1674-07-05 |  100 |     72 |
+|          6 | Astrid                     | wiking  | 1677-08-18 |   75 |     49 |
+|          7 | Ibra                       | wiking  | 1674-02-03 |  105 |     87 |
+|          8 | Bjolkolur                  | wiking  | 1676-03-30 |  110 |     93 |
+|          9 | Nemo                       | ryba    | 1677-10-02 |    1 |      1 |
+|         10 | Loko                       | waz     | 1677-10-05 |    3 |      4 |
+|         11 | Drozd                      | ptak    | 1675-07-07 |    2 |      1 |
+|         12 | Ara                        | ptak    | 1676-05-05 |    2 |      1 |
+|         13 | Szczeki                    | ryba    | 1674-04-06 | 2100 |    600 |
+|         14 | Tesciowa                   | wiedzma | 1655-10-01 |   65 |     40 |
+|         15 | Tiki                       | malpa   | 1672-08-08 |   32 |     25 |
+|         16 | Dziadek                    | wiking  | 1645-01-23 |   54 |    100 |
+|         17 | sztuczna szczeka tesciowej | wiedzma | 1680-08-13 |    2 |      1 |
+|         18 | Tesciowa dziadka           | wiedzma | 1630-04-30 |   78 |     12 |
+|        100 | Babajaga                   | wiedzma | 1000-01-01 |   20 |   1000 |
++------------+----------------------------+---------+------------+------+--------+
+19 rows in set (0.00 sec)
+
+mysql> SELECT * FROM zasob;
++----------+-------------------+--------+-------+----------------+--------------------+
+| idZasobu | nazwa             | waga   | ilosc | dataPozyskania | rodzaj             |
++----------+-------------------+--------+-------+----------------+--------------------+
+|        1 | kokos             |   2.00 |     3 | 2007-07-23     | jedzenie           |
+|        2 | siekiera          |  13.00 |     1 | 1974-01-04     | narzedzie          |
+|        3 | kokos             |   4.00 |     1 | 2004-09-03     | jedzenie           |
+|        4 | kokos             |   7.00 |     2 | 2010-10-13     | jedzenie           |
+|        5 | banan             |   2.00 |    12 | 2015-11-09     | jedzenie           |
+|        6 | figa              |   1.00 |    30 | 2001-12-14     | jedzenie           |
+|        7 | krokodyl          | 100.00 |     1 | 2005-07-14     | jedzenie           |
+|        8 | bataty            |   1.00 |    30 | 2002-07-01     | jedzenie           |
+|        9 | opos              |  12.00 |     2 | 2006-08-01     | jedzenie           |
+|       10 | stanik            |   0.20 |   120 | 2004-06-01     | NULL               |
+|       11 | stanik            |   0.30 |    20 | 2004-06-15     | NULL               |
+|       12 | stanik            |   0.40 |    30 | 2004-07-15     | NULL               |
+|       13 | stanik            |   0.20 |    40 | 2012-08-15     | NULL               |
+|       14 | buty              |   2.00 |     2 | 2010-08-15     | ubranie            |
+|       15 | lisc palmowy      |   0.10 |  1000 | 2001-03-25     | ubranie            |
+|       16 | skora geparda     |  30.00 |     7 | 2013-07-25     | ubranie            |
+|       17 | kiel slonia       |   1.00 |     9 | 2003-01-25     | ubranie            |
+|       18 | topor             |   3.00 |     1 | 2000-01-25     | narzedzie zbrodni  |
+|       19 | dzida             |   2.00 |    10 | 2001-03-21     | narzedzie zbrodni  |
+|       20 | luk               |   1.00 |     3 | 2003-04-17     | narzedzie zbrodni  |
+|       21 | pnacza            |   0.10 |   300 | 2010-02-17     | material budowlany |
+|       22 | deski             |   0.50 |   120 | 2008-02-17     | material budowlany |
+|       23 | hamak             |   2.00 |     1 | 2001-01-17     | miejsce wypoczynku |
+|       24 | chatka na drzewie |   2.00 |     1 | 2012-08-17     | miejsce wypoczynku |
+|       25 | nie wiadomo co    |   4.00 |     1 | 2001-08-10     | NULL               |
+|       26 | ogien do ziania   |   1.00 |     4 | 2002-08-10     | NULL               |
+|       27 | miotla            |   3.00 |     1 | 2005-10-10     | NULL               |
+|       28 | banan             |   1.00 |     7 | 2008-08-21     | jedzenie           |
++----------+-------------------+--------+-------+----------------+--------------------+
+28 rows in set (0.16 sec)
+
+mysql> SELECT rodzaj, SUM(waga) AS ilosc FROM kreatura GROUP BY rodzaj;
++---------+-------+
+| rodzaj  | ilosc |
++---------+-------+
+| wiking  |   856 |
+| ryba    |  2101 |
+| waz     |     3 |
+| ptak    |     4 |
+| wiedzma |   165 |
+| malpa   |    32 |
++---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT rodzaj, SUM(waga) AS ilosc FROM zasob GROUP BY rodzaj;
++--------------------+--------+
+| rodzaj             | ilosc  |
++--------------------+--------+
+| jedzenie           | 130.00 |
+| narzedzie          |  13.00 |
+| NULL               |   9.10 |
+| ubranie            |  33.10 |
+| narzedzie zbrodni  |   6.00 |
+| material budowlany |   0.60 |
+| miejsce wypoczynku |   4.00 |
++--------------------+--------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT nazwa, AVG(waga) FROM zasob GROUP BY nazwa HAVING SUM(ilosc)>4 and SUM(waga)>10;
++---------------+-----------+
+| nazwa         | AVG(waga) |
++---------------+-----------+
+| kokos         |  4.333333 |
+| skora geparda | 30.000000 |
++---------------+-----------+
+2 rows in set (0.08 sec)
+
+mysql> SELECT COUNT(nazwa), rodzaj FROM zasob GROUP BY rodzaj HAVING COUNT(nazwa)>1;
++--------------+--------------------+
+| COUNT(nazwa) | rodzaj             |
++--------------+--------------------+
+|            9 | jedzenie           |
+|            7 | NULL               |
+|            4 | ubranie            |
+|            3 | narzedzie zbrodni  |
+|            2 | material budowlany |
+|            2 | miejsce wypoczynku |
++--------------+--------------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM kreatura;
++------------+----------------------------+---------+------------+------+--------+
+| idKreatury | nazwa                      | rodzaj  | dataUr     | waga | udzwig |
++------------+----------------------------+---------+------------+------+--------+
+|          1 | Bjorn                      | wiking  | 1670-04-01 |   99 |     80 |
+|          2 | Brutal                     | wiking  | 1672-12-24 |  120 |     85 |
+|          3 | Khorad                     | wiking  | 1671-07-15 |  105 |     81 |
+|          4 | Birgun                     | wiking  | 1675-05-11 |   88 |     66 |
+|          5 | Defgard                    | wiking  | 1674-07-05 |  100 |     72 |
+|          6 | Astrid                     | wiking  | 1677-08-18 |   75 |     49 |
+|          7 | Ibra                       | wiking  | 1674-02-03 |  105 |     87 |
+|          8 | Bjolkolur                  | wiking  | 1676-03-30 |  110 |     93 |
+|          9 | Nemo                       | ryba    | 1677-10-02 |    1 |      1 |
+|         10 | Loko                       | waz     | 1677-10-05 |    3 |      4 |
+|         11 | Drozd                      | ptak    | 1675-07-07 |    2 |      1 |
+|         12 | Ara                        | ptak    | 1676-05-05 |    2 |      1 |
+|         13 | Szczeki                    | ryba    | 1674-04-06 | 2100 |    600 |
+|         14 | Tesciowa                   | wiedzma | 1655-10-01 |   65 |     40 |
+|         15 | Tiki                       | malpa   | 1672-08-08 |   32 |     25 |
+|         16 | Dziadek                    | wiking  | 1645-01-23 |   54 |    100 |
+|         17 | sztuczna szczeka tesciowej | wiedzma | 1680-08-13 |    2 |      1 |
+|         18 | Tesciowa dziadka           | wiedzma | 1630-04-30 |   78 |     12 |
+|        100 | Babajaga                   | wiedzma | 1000-01-01 |   20 |   1000 |
++------------+----------------------------+---------+------------+------+--------+
+19 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(ekwipunek.idKreatury), kreatura.nazwa FROM ekwipunek, kreatura WHERE kreatura.idKreatury = ekwipunek.idKreatury GROUP BY ekwipunek.idKreatury;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'szymanskim.kreatura.nazwa' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql>
+mysql> select count(ekwipunek.idKreatury), kreatura.nazwa from ekwipunek, kreatura where kreatura.idKreatury = ekwipunek.idKreatury group by ekwipunek.idKreatury;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'szymanskim.kreatura.nazwa' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> show tables;
++----------------------+
+| Tables_in_szymanskim |
++----------------------+
+| Marynaz              |
+| ekwipunek            |
+| kreatura             |
+| postac               |
+| pracownik            |
+| przetwory            |
+| walizka              |
+| zasob                |
+| zwierz               |
++----------------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM ekwipunek;
++-------------+------------+----------+-------+
+| idEkwipunku | idKreatury | idZasobu | ilosc |
++-------------+------------+----------+-------+
+|           1 |          1 |        1 |     2 |
+|           2 |          1 |       10 |     1 |
+|           3 |          1 |       14 |     3 |
+|           4 |          1 |       15 |    53 |
+|           5 |          1 |        2 |     3 |
+|           6 |          2 |        2 |     2 |
+|           7 |          2 |        4 |     2 |
+|           8 |          1 |       23 |     1 |
+|           9 |          1 |       18 |     1 |
+|          10 |          6 |        1 |     4 |
+|          11 |          3 |       17 |     1 |
+|          12 |          7 |       16 |     1 |
+|          13 |          7 |       19 |     1 |
+|          14 |         14 |       25 |     2 |
+|          15 |         14 |       27 |     1 |
+|          16 |         14 |       24 |     1 |
+|          17 |         14 |       26 |     1 |
+|          18 |          6 |       20 |     1 |
+|          19 |          5 |       17 |     2 |
+|          20 |          8 |       21 |     2 |
+|          21 |         11 |       13 |     1 |
+|          22 |          8 |       22 |    10 |
+|          23 |         13 |        9 |     1 |
+|          24 |          5 |        2 |     2 |
+|          25 |          5 |       21 |    50 |
+|          26 |          5 |       16 |     1 |
+|          27 |       NULL |       12 |    34 |
+|          28 |          6 |       13 |     1 |
++-------------+------------+----------+-------+
+28 rows in set (0.13 sec)
+
+mysql> SELECT COUNT(ekwipunek.idKreatury), kreatura.nazwa FROM ekwipunek, kreatura WHERE kreatura.idKreatury = ekwipunek.idKreatury GROUP BY ekwipunek.idKreatury;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'szymanskim.kreatura.nazwa' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT COUNT(ekwipunek.idKreatury), kreatura.nazwa FROM ekwipunek, kreatura WHERE kreatura.idKreatury = ekwipunek.idKreatury;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'szymanskim.kreatura.nazwa'; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT COUNT(ekwipunek.idKreatury), kreatura.nazwa FROM ekwipunek, kreatura WHERE kreatura.idKreatury = ekwipunek.idKreatury GROUP BY nazwa.kreatura;
+ERROR 1054 (42S22): Unknown column 'nazwa.kreatura' in 'group statement'
+mysql> SELECT COUNT(ekwipunek.idKreatury), kreatura.nazwa FROM ekwipunek, kreatura WHERE kreatura.idKreatury = ekwipunek.idKreatury GROUP BY kreatura.nazwa;
++-----------------------------+-----------+
+| COUNT(ekwipunek.idKreatury) | nazwa     |
++-----------------------------+-----------+
+|                           7 | Bjorn     |
+|                           2 | Brutal    |
+|                           3 | Astrid    |
+|                           1 | Khorad    |
+|                           2 | Ibra      |
+|                           4 | Tesciowa  |
+|                           4 | Defgard   |
+|                           2 | Bjolkolur |
+|                           1 | Drozd     |
+|                           1 | Szczeki   |
++-----------------------------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT kreatura.nazwa, zasob.nazwa FROM kreatura, zasob, ekwipunek WHERE kreatura.idKreatury = ekwipunek.idKreatury AND zasob.idZasobu = ekwipunek.idZasobu;
++-----------+-------------------+
+| nazwa     | nazwa             |
++-----------+-------------------+
+| Astrid    | kokos             |
+| Bjorn     | kokos             |
+| Defgard   | siekiera          |
+| Brutal    | siekiera          |
+| Bjorn     | siekiera          |
+| Brutal    | kokos             |
+| Szczeki   | opos              |
+| Bjorn     | stanik            |
+| Astrid    | stanik            |
+| Drozd     | stanik            |
+| Bjorn     | buty              |
+| Bjorn     | lisc palmowy      |
+| Defgard   | skora geparda     |
+| Ibra      | skora geparda     |
+| Defgard   | kiel slonia       |
+| Khorad    | kiel slonia       |
+| Bjorn     | topor             |
+| Ibra      | dzida             |
+| Astrid    | luk               |
+| Defgard   | pnacza            |
+| Bjolkolur | pnacza            |
+| Bjolkolur | deski             |
+| Bjorn     | hamak             |
+| Tesciowa  | chatka na drzewie |
+| Tesciowa  | nie wiadomo co    |
+| Tesciowa  | ogien do ziania   |
+| Tesciowa  | miotla            |
++-----------+-------------------+
+27 rows in set (0.52 sec)
+
+mysql> SELECT kreatura.nazwa, zasob.nazwa FROM kreatura, zasob, ekwipunek WHERE kreatura.idKreatury = ekwipunek.idKreatury AND zasob.idZasobu = ekwipunek.idZasobu GROUP BY kreatura.nazwa;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'szymanskim.zasob.nazwa' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> SELECT kreatura.nazwa, zasob.nazwa FROM kreatura, zasob, ekwipunek WHERE kreatura.idKreatury = ekwipunek.idKreatury AND zasob.idZasobu = ekwipunek.idZasobu;
++-----------+-------------------+
+| nazwa     | nazwa             |
++-----------+-------------------+
+| Astrid    | kokos             |
+| Bjorn     | kokos             |
+| Defgard   | siekiera          |
+| Brutal    | siekiera          |
+| Bjorn     | siekiera          |
+| Brutal    | kokos             |
+| Szczeki   | opos              |
+| Bjorn     | stanik            |
+| Astrid    | stanik            |
+| Drozd     | stanik            |
+| Bjorn     | buty              |
+| Bjorn     | lisc palmowy      |
+| Defgard   | skora geparda     |
+| Ibra      | skora geparda     |
+| Defgard   | kiel slonia       |
+| Khorad    | kiel slonia       |
+| Bjorn     | topor             |
+| Ibra      | dzida             |
+| Astrid    | luk               |
+| Defgard   | pnacza            |
+| Bjolkolur | pnacza            |
+| Bjolkolur | deski             |
+| Bjorn     | hamak             |
+| Tesciowa  | chatka na drzewie |
+| Tesciowa  | nie wiadomo co    |
+| Tesciowa  | ogien do ziania   |
+| Tesciowa  | miotla            |
++-----------+-------------------+
+27 rows in set (0.00 sec)
+
+mysql> SELECT nazwa FROM kreatura WHERE idKreatury NOT IN (SELECT idKreatury FROM ekwipunek);
+Empty set (0.04 sec)
+
+mysql> SELECT kreatura.nazwa, zasob.nazwa, FROM kreatura, zasob, ekwipunek WHERE kreatura.rodzaj = "wiking" AND YEAR(kreatura.dataUr) BETWEEN 1670 AND 1679 AND kreatura.idKreatury = ekwipunek.idKreatury AND zasob.idZasobu = ekwipunek.idZasobu;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM kreatura, zasob, ekwipunek WHERE kreatura.rodzaj = "wiking" AND YEAR(kreatu' at line 1
+mysql> SELECT kreatura.nazwa, zasob.nazwa FROM kreatura, zasob, ekwipunek WHERE kreatura.rodzaj = "wiking" AND YEAR(kreatura.dataUr) BETWEEN 1670 AND 1679 AND kreatura.idKreatury = ekwipunek.idKreatury AND zasob.idZasobu = ekwipunek.idZasobu;
++-----------+---------------+
+| nazwa     | nazwa         |
++-----------+---------------+
+| Astrid    | kokos         |
+| Bjorn     | kokos         |
+| Defgard   | siekiera      |
+| Brutal    | siekiera      |
+| Bjorn     | siekiera      |
+| Brutal    | kokos         |
+| Bjorn     | stanik        |
+| Astrid    | stanik        |
+| Bjorn     | buty          |
+| Bjorn     | lisc palmowy  |
+| Defgard   | skora geparda |
+| Ibra      | skora geparda |
+| Defgard   | kiel slonia   |
+| Khorad    | kiel slonia   |
+| Bjorn     | topor         |
+| Ibra      | dzida         |
+| Astrid    | luk           |
+| Defgard   | pnacza        |
+| Bjolkolur | pnacza        |
+| Bjolkolur | deski         |
+| Bjorn     | hamak         |
++-----------+---------------+
+21 rows in set (0.12 sec)
+
+mysql> SELECT kreatura.nazwa FROM kreatura, zasob, ekwipunek WHERE kreatura.idKreatury = ekwipunek.idKreatury AND zasob.idZasobu = ekwipunek.idZasobu AND rodzaj.zasob="jedzenie" AND ORDER BY kreatura.dataUr LIMIT BY 5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDER BY kreatura.dataUr LIMIT BY 5' at line 1
+mysql> SELECT kreatura.nazwa FROM kreatura, zasob, ekwipunek WHERE kreatura.idKreatury = ekwipunek.idKreatury AND zasob.idZasobu = ekwipunek.idZasobu AND rodzaj.zasob="jedzenie" ORDER BY kreatura.dataUr LIMIT BY 5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'BY 5' at line 1
+mysql> SELECT kreatura.nazwa FROM kreatura, zasob, ekwipunek WHERE kreatura.idKreatury = ekwipunek.idKreatury AND zasob.idZasobu = ekwipunek.idZasobu AND rodzaj.zasob="jedzenie" ORDER BY kreatura.dataUr LIMIT 5;
+ERROR 1054 (42S22): Unknown column 'rodzaj.zasob' in 'where clause'
+mysql> SELECT kreatura.nazwa FROM kreatura, zasob, ekwipunek WHERE kreatura.idKreatury = ekwipunek.idKreatury AND zasob.idZasobu = ekwipunek.idZasobu AND zasob.rodzaj="jedzenie" ORDER BY kreatura.dataUr LIMIT 5;
++---------+
+| nazwa   |
++---------+
+| Bjorn   |
+| Brutal  |
+| Szczeki |
+| Astrid  |
++---------+
+4 rows in set (0.07 sec)
+
+mysql> SELECT kreatura.nazwa, kreatura.dataUr FROM kreatura, zasob, ekwipunek WHERE kreatura.idKreatury = ekwipunek.idKreatury AND zasob.idZasobu = ekwipunek.idZasobu AND rodzaj.zasob="jedz
+enie" ORDER BY kreatura.dataUr LIMIT 5;
+ERROR 1054 (42S22): Unknown column 'rodzaj.zasob' in 'where clause'
+mysql> SELECT kreatura.nazwa, kreatura.dataUr FROM kreatura, zasob, ekwipunek WHERE kreatura.idKreatury = ekwipunek.idKreatury AND zasob.idZasobu = ekwipunek.idZasobu AND zasob.rodzaj="jedz
+enie" ORDER BY kreatura.dataUr LIMIT 5;
++---------+------------+
+| nazwa   | dataUr     |
++---------+------------+
+| Bjorn   | 1670-04-01 |
+| Brutal  | 1672-12-24 |
+| Szczeki | 1674-04-06 |
+| Astrid  | 1677-08-18 |
++---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT kreatura.nazwa, kreatura.dataUr FROM kreatura, zasob, ekwipunek WHERE kreatura.idKreatury = ekwipunek.idKreatury AND zasob.idZasobu = ekwipunek.idZasobu AND zasob.rodzaj="jedzenie" ORDER BY kreatura.dataUr DESC  LIMIT 5;
++---------+------------+
+| nazwa   | dataUr     |
++---------+------------+
+| Astrid  | 1677-08-18 |
+| Szczeki | 1674-04-06 |
+| Brutal  | 1672-12-24 |
+| Bjorn   | 1670-04-01 |
++---------+------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT t1.idKreatury, t1.nazwa, t2.idKreatury, t2.nazwa FROM kreatura t1 INNER JOIN t2 on t1.idkreatury+5=t2.idKreatury;
+ERROR 1146 (42S02): Table 'szymanskim.t2' doesn't exist
+mysql> SELECT kreatura.idKreatury, kreatura.nazwa, kreatura.idKreatury, kreatura.nazwa FROM kreatura  INNER JOIN kreatura on kreatura.idkreatury+5=kreatura.idKreatury;
+ERROR 1066 (42000): Not unique table/alias: 'kreatura'
+mysql> SELECT t1.idKreatury, t1.nazwa, t2.idKreatury, t2.nazwa FROM kreatura AS t1 INNER JOIN kreatura AS t2 on t1.idkreatury+5=t2.idKreatury;
++------------+-----------+------------+----------------------------+
+| idKreatury | nazwa     | idKreatury | nazwa                      |
++------------+-----------+------------+----------------------------+
+|          1 | Bjorn     |          6 | Astrid                     |
+|          2 | Brutal    |          7 | Ibra                       |
+|          3 | Khorad    |          8 | Bjolkolur                  |
+|          4 | Birgun    |          9 | Nemo                       |
+|          5 | Defgard   |         10 | Loko                       |
+|          6 | Astrid    |         11 | Drozd                      |
+|          7 | Ibra      |         12 | Ara                        |
+|          8 | Bjolkolur |         13 | Szczeki                    |
+|          9 | Nemo      |         14 | Tesciowa                   |
+|         10 | Loko      |         15 | Tiki                       |
+|         11 | Drozd     |         16 | Dziadek                    |
+|         12 | Ara       |         17 | sztuczna szczeka tesciowej |
+|         13 | Szczeki   |         18 | Tesciowa dziadka           |
++------------+-----------+------------+----------------------------+
+13 rows in set (1.33 sec)
+
+mysql>
+mysql> Select round(sum(zasob.ilosc*zasob.waga)/count(1) , 2) as avg, kreatura.rodzaj from zasob, kreatura, ekwipunek where kreatura.rodzaj !="malpa" and kreatura.rodzaj!="waz" and kreatura.idKreatury=ekwipunek.idKreatury and zasob.idZasobu!=ekwipunek.idZasobu group by kreatura.rodzaj;
++-------+---------+
+| avg   | rodzaj  |
++-------+---------+
+| 26.61 | wiking  |
+| 27.11 | ryba    |
+|  27.7 | ptak    |
+| 27.88 | wiedzma |
++-------+---------+
+4 rows in set (0.03 sec)
+
+mysql> SELECT rodzaj, nazwa, dataUr, FROM kreatura WHERE dataUr = (SELECT MAX(dataUr) FROM kreatura) OR dataUr = (SELECT MIN(dataUr) FROM kreatura);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM kreatura WHERE dataUr = (SELECT MAX(dataUr) FROM kreatura) OR dataUr = (SEL' at line 1
+mysql> SELECT rodzaj, nazwa, dataUr FROM kreatura WHERE dataUr = (SELECT MAX(dataUr) FROM kreatura) OR dataUr = (SELECT MIN(dataUr) FROM kreatura);
++---------+----------------------------+------------+
+| rodzaj  | nazwa                      | dataUr     |
++---------+----------------------------+------------+
+| wiedzma | sztuczna szczeka tesciowej | 1680-08-13 |
+| wiedzma | Babajaga                   | 1000-01-01 |
++---------+----------------------------+------------+
+2 rows in set (0.84 sec)
