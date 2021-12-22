@@ -1,0 +1,203 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| szymanskim         |
+| wikingowie         |
++--------------------+
+3 rows in set (0.20 sec)
+
+mysql> use szymanskim
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> CREATE TABLE kreatura LIKE wikingowie.kreatura;
+ERROR 1050 (42S01): Table 'kreatura' already exists
+mysql> INSERT INTO kreatura SELECT * FROM wikingowie.kreatura;
+Query OK, 19 rows affected (0.16 sec)
+Records: 19  Duplicates: 0  Warnings: 0
+
+mysql> show tables;
++----------------------+
+| Tables_in_szymanskim |
++----------------------+
+| Marynaz              |
+| ekwipunek            |
+| kreatura             |
+| postac               |
+| pracownik            |
+| przetwory            |
+| walizka              |
+| zasob                |
+| zwierz               |
++----------------------+
+9 rows in set (0.04 sec)
+
+mysql> use wikingowie;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++----------------------+
+| Tables_in_wikingowie |
++----------------------+
+| ekwipunek            |
+| etapy_wyprawy        |
+| kreatura             |
+| sektor               |
+| uczestnicy           |
+| wyprawa              |
+| zasob                |
++----------------------+
+7 rows in set (0.01 sec)
+
+mysql> use szymanskim;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> CREATE TABLE uczestnicy LIKE wikingowie.uczestnicy;
+Query OK, 0 rows affected (1.26 sec)
+
+mysql> INSERT INTO uczestnicy SELECT * FROM wikingowie.uczestnicy;
+Query OK, 18 rows affected (0.36 sec)
+Records: 18  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE etapy_wyprawy LIKE wikingowie.etapy_wyprawy;
+Query OK, 0 rows affected (1.10 sec)
+
+mysql> INSERT INTO etapy_wyprawy SELECT * FROM wikingowie.etapy_wyprawy;
+Query OK, 15 rows affected (0.60 sec)
+Records: 15  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE sektor LIKE wikingowie.sektor;
+Query OK, 0 rows affected (0.99 sec)
+
+mysql> INSERT INTO sektor SELECT * FROM wikingowie.sektor;
+Query OK, 9 rows affected (0.24 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+mysql> CREATE TABLE wyprawa LIKE wikingowie.wyprawa;
+Query OK, 0 rows affected (1.04 sec)
+
+mysql> INSERT INTO wyprawa SELECT * FROM wikingowie.wyprawa;
+Query OK, 3 rows affected (0.42 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM wyprawa;
++------------+-----------------------+------------------+------------------+-----------+
+| id_wyprawy | nazwa                 | data_rozpoczecia | data_zakonczenia | kierownik |
++------------+-----------------------+------------------+------------------+-----------+
+|          1 | Poszukiwanie ziecia   | 1700-08-02       | 1700-08-04       |        14 |
+|          2 | Polowanie na tesciowa | 1700-08-04       | 1700-08-06       |         1 |
+|          3 | Nakarm kanibala       | 1700-08-02       | 1700-08-04       |        16 |
++------------+-----------------------+------------------+------------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM uczestnicy;
++------------+---------------+
+| id_wyprawy | id_uczestnika |
++------------+---------------+
+|          2 |             1 |
+|          3 |             1 |
+|          3 |             3 |
+|          2 |             4 |
+|          3 |             6 |
+|          2 |             7 |
+|          3 |             8 |
+|          1 |             9 |
+|          2 |            10 |
+|          2 |            11 |
+|          3 |            11 |
+|          2 |            13 |
+|          1 |            14 |
+|          1 |            15 |
+|          2 |            16 |
+|          3 |            16 |
+|          1 |            17 |
+|          1 |            18 |
++------------+---------------+
+18 rows in set (0.00 sec)
+
+mysql> SELECT kreatura.nazwa FROM kreatura WHERE idKreatury NOT IN (SELECT id_uczestnika FROM uczestnicy);
++----------+
+| nazwa    |
++----------+
+| Brutal   |
+| Defgard  |
+| Ara      |
+| Babajaga |
+| Brutal   |
+| Defgard  |
+| Ara      |
+| Babajaga |
++----------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT wyprawa.nazwa, SUM(ekwipunek.ilosc) FROM ekwipunek, wyprawa, uczestnicy WHERE uczestnicy.id_uczestnika=ekwipunek.idKreatury AND uczestnicy.id_wyprawy=wyprawa.id_wyprawy GROUP BY wyprawa.id_wyprawy;
++-----------------------+----------------------+
+| nazwa                 | SUM(ekwipunek.ilosc) |
++-----------------------+----------------------+
+| Nakarm kanibala       |                   84 |
+| Polowanie na tesciowa |                   68 |
+| Poszukiwanie ziecia   |                    5 |
++-----------------------+----------------------+
+3 rows in set (0.09 sec)
+
+mysql> SELECT wyprawa, sum(1), group_concat(kreatura.nazwa) FROM wyprawa, uczestnicy, kreatura WHERE wyprawa.id_wyprawy=uczestnicy.id_wyprawy and kreatura.idKreatury=uczestnicy.id_uczestnika GROUP BY wyprawa.id_wyprawy;
+ERROR 1054 (42S22): Unknown column 'wyprawa' in 'field list'
+mysql> SELECT wyprawa.nazwa, sum(1), group_concat(kreatura.nazwa) FROM wyprawa, uczestnicy, kreatura WHERE wyprawa.id_wyprawy=uczestnicy.id_wyprawy and kreatura.idKreatury=uczestnicy.id_uczestnika GROUP BY wyprawa.id_wyprawy;
++-----------------------+--------+-------------------------------------------------------------------------------------------------------------------------------+
+| nazwa                 | sum(1) | group_concat(kreatura.nazwa)                                                                                                  |
++-----------------------+--------+-------------------------------------------------------------------------------------------------------------------------------+
+| Poszukiwanie ziecia   |     10 | Tesciowa dziadka,Tesciowa dziadka,sztuczna szczeka tesciowej,Tiki,Tesciowa,Nemo,Nemo,Tesciowa,Tiki,sztuczna szczeka tesciowej |
+| Polowanie na tesciowa |     14 | Szczeki,Drozd,Loko,Ibra,Dziadek,Birgun,Bjorn,Bjorn,Dziadek,Birgun,Szczeki,Drozd,Ibra,Loko                                     |
+| Nakarm kanibala       |     12 | Bjorn,Bjorn,Khorad,Dziadek,Astrid,Bjolkolur,Drozd,Drozd,Bjolkolur,Astrid,Dziadek,Khorad                                       |
++-----------------------+--------+-------------------------------------------------------------------------------------------------------------------------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT wyprawa.nazwa, AS 'wyprawa', sektor.nazwa AS 'sektor', kreatura.nazwa FROM wyprawa, sektor, etapy_wyprawy, kreatura WHERE etapt_wyprawy.idWyprawy=wyprawa.id_wyprawy AND etapy_wyprawy.sektor=sektor.id_sektora AND kreatura.idKreatury=wyprawa.kierownik ORDER BY wyprawa.data_rozpoczecia, etapy_wyprawy.kolejnosc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS 'wyprawa', sektor.nazwa AS 'sektor', kreatura.nazwa FROM wyprawa, sektor, eta' at line 1
+mysql> SELECT wyprawa.nazwa, AS "wyprawa", sektor.nazwa AS 'sektor', kreatura.nazwa FROM wyprawa, sektor, etapy_wyprawy, kreatura WHERE etapt_wyprawy.idWyprawy=wyprawa.id_wyprawy AND etapy_wyprawy.sektor=sektor.id_sektora AND kreatura.idKreatury=wyprawa.kierownik ORDER BY wyprawa.data_rozpoczecia, etapy_wyprawy.kolejnosc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS "wyprawa", sektor.nazwa AS 'sektor', kreatura.nazwa FROM wyprawa, sektor, eta' at line 1
+mysql> SELECT wyprawa.nazwa AS 'wyprawa', sektor.nazwa AS 'sektor', kreatura.nazwa FROM wyprawa, sektor, etapy_wyprawy, kreatura WHERE etapt_wyprawy.idWyprawy=wyprawa.id_wyprawy AND etapy_wyprawy.sektor=sektor.id_sektora AND kreatura.idKreatury=wyprawa.kierownik ORDER BY wyprawa.data_rozpoczecia, etapy_wyprawy.kolejnosc;
+ERROR 1054 (42S22): Unknown column 'etapt_wyprawy.idWyprawy' in 'where clause'
+mysql> SELECT wyprawa.nazwa AS 'wyprawa', sektor.nazwa AS 'sektor', kreatura.nazwa FROM wyprawa, sektor, etapy_wyprawy, kreatura WHERE etapy_wyprawy.idWyprawy=wyprawa.id_wyprawy AND etapy_wyprawy.sektor=sektor.id_sektora AND kreatura.idKreatury=wyprawa.kierownik ORDER BY wyprawa.data_rozpoczecia, etapy_wyprawy.kolejnosc;
++-----------------------+--------------------+----------+
+| wyprawa               | sektor             | nazwa    |
++-----------------------+--------------------+----------+
+| Nakarm kanibala       | Chatka dziadka     | Dziadek  |
+| Poszukiwanie ziecia   | Pieczara tesciowej | Tesciowa |
+| Nakarm kanibala       | Chatka dziadka     | Dziadek  |
+| Poszukiwanie ziecia   | Pieczara tesciowej | Tesciowa |
+| Nakarm kanibala       | Pieczara tesciowej | Dziadek  |
+| Poszukiwanie ziecia   | Wulkan             | Tesciowa |
+| Nakarm kanibala       | Pieczara tesciowej | Dziadek  |
+| Poszukiwanie ziecia   | Wulkan             | Tesciowa |
+| Poszukiwanie ziecia   | Wioska Kanibali    | Tesciowa |
+| Poszukiwanie ziecia   | Wioska Kanibali    | Tesciowa |
+| Nakarm kanibala       | Zatoka rekinow     | Dziadek  |
+| Nakarm kanibala       | Zatoka rekinow     | Dziadek  |
+| Poszukiwanie ziecia   | Pieprzne pole      | Tesciowa |
+| Nakarm kanibala       | Wulkan             | Dziadek  |
+| Poszukiwanie ziecia   | Pieprzne pole      | Tesciowa |
+| Nakarm kanibala       | Wulkan             | Dziadek  |
+| Poszukiwanie ziecia   | Chatka dziadka     | Tesciowa |
+| Poszukiwanie ziecia   | Chatka dziadka     | Tesciowa |
+| Nakarm kanibala       | Wioska Kanibali    | Dziadek  |
+| Nakarm kanibala       | Wioska Kanibali    | Dziadek  |
+| Polowanie na tesciowa | Kokosowa plaza     | Bjorn    |
+| Polowanie na tesciowa | Kokosowa plaza     | Bjorn    |
+| Polowanie na tesciowa | Chatka dziadka     | Bjorn    |
+| Polowanie na tesciowa | Chatka dziadka     | Bjorn    |
+| Polowanie na tesciowa | Wulkan             | Bjorn    |
+| Polowanie na tesciowa | Wulkan             | Bjorn    |
+| Polowanie na tesciowa | Zatoka rekinow     | Bjorn    |
+| Polowanie na tesciowa | Zatoka rekinow     | Bjorn    |
+| Polowanie na tesciowa | Pieczara tesciowej | Bjorn    |
+| Polowanie na tesciowa | Pieczara tesciowej | Bjorn    |
++-----------------------+--------------------+----------+
+30 rows in set (0.00 sec)
